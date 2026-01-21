@@ -42,7 +42,6 @@ def topicsReport(df):
 
     return report
 
-
 def find_column(df, possible_names):
     for col in df.columns:
         col_lower = str(col).lower()

@@ -1,5 +1,3 @@
-import pandas as pd
-
 def scheduleReport(df):
     report = "~Отчет по расписанию~\n\n"
 

@@ -1,10 +1,9 @@
 from handlers.commands import show_main_menu
 
-
 def register_handlers(bot):
     @bot.message_handler(func=lambda message: True)
     def handle_messages(message):
-        text = message.text.lower()
+        text = message.text.lower() #Приводим текст пользователя к нижнему регистру
 
         if text in ['начать', 'start', '/start']:
             name = message.from_user.first_name

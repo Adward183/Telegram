@@ -59,7 +59,6 @@ def find_column(df, possible_names):
                 return col
     return None
 
-
 def convert_to_percent(value):
     if pd.isna(value):
         return None

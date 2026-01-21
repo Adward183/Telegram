@@ -65,7 +65,6 @@ def find_column(df, possible_names):
                 return col
     return None
 
-
 def to_number(value):
     if pd.isna(value):
         return 0

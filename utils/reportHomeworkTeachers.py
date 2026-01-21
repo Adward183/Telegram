@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def homeworkTeachersReport(df):
     report = "~Отчет по проверке домашних заданий преподавателями~\n\n"
 
