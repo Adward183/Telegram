@@ -19,7 +19,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-pyvenv.cfg
+*.venv/
 
 #Environment
 .env
