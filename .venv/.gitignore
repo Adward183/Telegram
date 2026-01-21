@@ -19,6 +19,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+pyvenv.cfg
 
 #Environment
 .env
@@ -43,3 +44,4 @@ Thumbs.db
 temp/
 logs/
 *.log
+
