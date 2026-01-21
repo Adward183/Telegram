@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def attendanceTeachersReport(df):
     report = "~Отчет по посещаемости преподавателей~\n\n"
 

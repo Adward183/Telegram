@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def generateStudentsReport(df):
     report = "~Отчет по оценкам студентов~\n\n"
 

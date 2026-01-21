@@ -7,7 +7,6 @@ from utils.reportAttendanceTeachers import attendanceTeachersReport
 from utils.reportHomeworkStudents import homeworkStudentsReport
 from utils.reportHomeworkTeachers import homeworkTeachersReport
 
-
 def processExcelFileWithType(file_path, filename, file_type):
     if os.path.getsize(file_path) > 30 * 1024 * 1024:
         return "Файл слишком большой."
