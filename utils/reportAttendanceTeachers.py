@@ -28,12 +28,12 @@ def attendanceTeachersReport(df):
         attendance_percent = convert_to_percent(attendance_val)
 
         if attendance_percent is not None and attendance_percent < 40:
-            low_attendance.append({
+            (low_attendance.append({
                 'teacher': teacher_name,
                 'attendance': attendance_percent,
                 'row': idx + 2,
                 'original_value': attendance_val
-            })
+            }))
 
     report += f"Всего преподавателей найдено: {total_teachers}\n"
 

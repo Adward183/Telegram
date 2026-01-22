@@ -10,3 +10,9 @@ MimeTypes = [
 Temp = "temp" #Инициализация папки для временных данных
 
 os.makedirs(Temp, exist_ok=True) #Создаем директорию
+
+DB_FILE = "bot_database.db"  # Файл базы данных
+ADMIN_ID = [1614111245]
+
+def is_admin(user_id):
+    return user_id in ADMIN_ID
