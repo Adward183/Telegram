@@ -1,7 +1,7 @@
 import telebot #Telegram Bot Api
 from handlers import commands, documents, messages
 from config import Token
-from db_init import init_database  # Импортируем инициализацию
+from db import init_database  # Импортируем инициализацию
 
 print("~Инициализация базы данных~")
 init_database()
