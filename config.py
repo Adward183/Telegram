@@ -11,7 +11,7 @@ Temp = "temp" #Инициализация папки для временных �
 
 os.makedirs(Temp, exist_ok=True) #Создаем директорию
 
-DB_FILE = "bot_database.db"  # Файл базы данных
+DB_FILE = "bot_database.db"  #Файл базы данных
 ADMIN_ID = [1614111245]
 
 def is_admin(user_id):

@@ -2,7 +2,7 @@ from telebot import types
 import sqlite3
 from config import DB_FILE, ADMIN_ID
 
-user_states = {}  # Хранит состояние пользователя: user_id и report_type
+user_states = {}  #Хранит состояние пользователя: user_id и report_type
 
 REPORT_TYPES = {
     'schedule': "Расписание",
@@ -11,25 +11,25 @@ REPORT_TYPES = {
     'attendance_teachers': "Посещаемость преподавателей",
     'homework_teachers': "ДЗ преподавателей",
     'homework_students': "ДЗ студентов"
-}  # Словарь типов отчетов и их названий
+}  #Словарь типов отчетов и их названий
 
 
 def show_main_menu(bot, chat_id, message_text=None):
-    keyboard = types.InlineKeyboardMarkup(row_width=2)  # Создаем inline клавиатуру
+    keyboard = types.InlineKeyboardMarkup(row_width=2)  #Создаем inline клавиатуру
 
-    buttons = []  # Массив кнопок
-    for key, name in REPORT_TYPES.items():  # Циклом проходимся по словарю и добавляем в массив кнопок
+    buttons = []  #Массив кнопок
+    for key, name in REPORT_TYPES.items():  #Циклом проходимся по словарю и добавляем в массив кнопок
         buttons.append(types.InlineKeyboardButton(name, callback_data=f"type_{key}"))
 
-    keyboard.add(*buttons)  # Добавляем в клавиатуру кнопки
+    keyboard.add(*buttons)  #Добавляем в клавиатуру кнопки
 
     text = message_text or "Выберите тип отчета, который хотите получить:"
     return bot.send_message(chat_id, text, reply_markup=keyboard)  # Выводим клавиатуру
 
 
-def register_handlers(bot):  # Обработчик команд
+def register_handlers(bot):  #Обработчик команд
 
-    @bot.message_handler(commands=['start'])  # Команда start - приветствие и выбор отчета
+    @bot.message_handler(commands=['start'])  #Команда start - приветствие и выбор отчета
     def start(message):
         name = message.from_user.first_name
         user_id = message.from_user.id
@@ -51,14 +51,14 @@ def register_handlers(bot):  # Обработчик команд
 
         show_main_menu(bot, message.chat.id, f"Привет, {name}! Выберите тип отчета:")
 
-    @bot.message_handler(commands=['cancel'])  # Команда cancel - отменяем выбор отчета
+    @bot.message_handler(commands=['cancel'])  #Команда cancel - отменяем выбор отчета
     def cancel_command(message):
         chat_id = message.chat.id
         if chat_id in user_states:
             del user_states[chat_id]
         show_main_menu(bot, chat_id, "Текущее действие отменено. Выберите тип отчета:")
 
-    @bot.message_handler(commands=['mystats'])  # Команда для статистики пользователя
+    @bot.message_handler(commands=['mystats'])  #Команда для статистики пользователя
     def mystats_command(message):
         user_id = message.from_user.id
 
@@ -83,7 +83,7 @@ def register_handlers(bot):  # Обработчик команд
 
         bot.reply_to(message, response)
 
-    @bot.message_handler(commands=['admin'])  # Админ панель
+    @bot.message_handler(commands=['admin'])  #Админ панель
     def admin_command(message):
         user_id = message.from_user.id
 
@@ -118,7 +118,7 @@ def register_handlers(bot):  # Обработчик команд
 
         bot.reply_to(message, response)
 
-    @bot.callback_query_handler(func=lambda call: call.data.startswith('type_'))  # Обработка нажатия inline кнопок
+    @bot.callback_query_handler(func=lambda call: call.data.startswith('type_'))  #Обработка нажатия inline кнопок
     def handle_report_type(call):
         bot.delete_message(call.message.chat.id, call.message.message_id)
 

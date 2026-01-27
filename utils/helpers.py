@@ -9,7 +9,7 @@ def sendReport(bot, chat_id, text): #Отправка результата
     send_as_file(bot, chat_id, text, filename)
 
 def get_filename(text): #Анализирует первую строку отчета
-    # Определяет тип отчета по уникальному заголовку
+    #Определяет тип отчета по уникальному заголовку
     if text.startswith("~Отчет по темам уроков~"):
         return "темы.txt"
     elif text.startswith("~Отчет по оценкам студентов~"):

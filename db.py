@@ -2,7 +2,7 @@ import sqlite3
 from config import DB_FILE
 
 
-def init_database():
+def database():
     print(f"Проверка базы данных: {DB_FILE}")
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
