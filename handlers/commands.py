@@ -2,7 +2,7 @@ from telebot import types
 import sqlite3
 from config import DB_FILE, ADMIN_ID
 
-user_states = {}  #Хранит состояние пользователя: user_id и report_type
+user_states = {}  #Хранит состояние пользователя: user_id и report_type  {1614111245: 'schedule'}
 
 REPORT_TYPES = {
     'schedule': "Расписание",
@@ -19,7 +19,7 @@ def show_main_menu(bot, chat_id, message_text=None):
 
     buttons = []  #Массив кнопок
     for key, name in REPORT_TYPES.items():  #Циклом проходимся по словарю и добавляем в массив кнопок
-        buttons.append(types.InlineKeyboardButton(name, callback_data=f"type_{key}"))
+        buttons.append(types.InlineKeyboardButton(name, callback_data=key))
 
     keyboard.add(*buttons)  #Добавляем в клавиатуру кнопки
 
@@ -118,11 +118,11 @@ def register_handlers(bot):  #Обработчик команд
 
         bot.reply_to(message, response)
 
-    @bot.callback_query_handler(func=lambda call: call.data.startswith('type_'))  #Обработка нажатия inline кнопок
+    @bot.callback_query_handler(func=lambda call: call.data in REPORT_TYPES.keys())  #Обработка нажатия inline кнопок
     def handle_report_type(call):
         bot.delete_message(call.message.chat.id, call.message.message_id)
 
-        report_type = call.data.replace('type_', '')
+        report_type = call.data
         user_id = call.message.chat.id
         user_states[user_id] = report_type
 
